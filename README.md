@@ -50,11 +50,12 @@ A lightweight Trello/Notion-style task collaboration platform built using:
 
 # 🏗 Architecture Overview
 
-## 🖥 Frontend (React SPA)
+### 🖥 Frontend (React SPA)
 
 frontend/
 │
 ├── components/
+
 │ ├── ListColumn.jsx
 │ ├── TaskCard.jsx
 │ └── ActivityPanel.jsx
@@ -77,7 +78,7 @@ frontend/
 
 ---
 
-## 🧠 Backend (Node + Express)
+### 🧠 Backend (Node + Express)
 
 
 backend/
@@ -115,7 +116,7 @@ backend/
 
 ---
 
-# 🗄 Database Schema (Prisma)
+### 🗄 Database Schema (Prisma)
 
 Core Models:
 
@@ -151,23 +152,23 @@ Board → Activity
 
 ---
 
-### Installation & Setup Guide
-## 1️⃣ Clone the Repository
+## Installation & Setup Guide
+### 1️⃣ Clone the Repository
 git clone <your-repo-url>
 cd task-collab-platform
 
-## 2️⃣ Backend Setup
+### 2️⃣ Backend Setup
 
-# Navigate to backend folder:
+### Navigate to backend folder:
 
 cd backend
 
 
-# Install dependencies:
+### Install dependencies:
 
 npm install
 
-# Create Environment Variables
+### Create Environment Variables
 
 Create a .env file inside the backend/ folder:
 
@@ -177,42 +178,42 @@ JWT_SECRET="supersecret"
 
 Replace YOUR_PASSWORD with your PostgreSQL password.
 
-# Run Prisma Migration
+### Run Prisma Migration
 
 Initialize database schema:
 
 npx prisma migrate dev --name init
 
 
-# Generate Prisma client:
+### Generate Prisma client:
 
 npx prisma generate
 
-# Start Backend Server
+### Start Backend Server
 npm run dev
 
 
-# Backend will run at:
+### Backend will run at:
 
 http://localhost:5000
 
 ## 3️⃣ Frontend Setup
 
-# Open a new terminal and navigate to frontend:
+### Open a new terminal and navigate to frontend:
 
 cd frontend
 
 
-# Install dependencies:
+### Install dependencies:
 
 npm install
 
 
-# Start React app:
+### Start React app:
 
 npm start
 
 
-# Frontend will run at:
+### Frontend will run at:
 
 http://localhost:3000
