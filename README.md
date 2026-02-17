@@ -48,7 +48,7 @@ A lightweight Trello/Notion-style task collaboration platform built using:
 
 ---
 
-# 🏗 Architecture Overview
+## 🏗 Architecture Overview
 
 ### 🖥 Frontend (React SPA)
 
@@ -138,7 +138,7 @@ Board → Activity
 
 ---
 
-# 🔄 Real-Time Strategy
+### 🔄 Real-Time Strategy
 
 - Socket.IO used for live updates
 - Users join board-specific rooms
@@ -148,11 +148,9 @@ Board → Activity
 
 ---
 
-# ⚙️ Setup Instructions
+## ⚙️ Setup Instructions
 
----
-
-## Installation & Setup Guide
+### Installation & Setup Guide
 ### 1️⃣ Clone the Repository
 git clone <your-repo-url>
 cd task-collab-platform
