@@ -1,217 +1,104 @@
-# 🚀 Real-Time Task Collaboration Platform
+# Task-Collab
 
-A lightweight Trello/Notion-style task collaboration platform built using:
+Task-Collab is a collaborative task management platform designed to streamline teamwork, project tracking, and productivity. The repository provides a robust backend and flexible client interfaces, allowing users to create, assign, and manage tasks in real-time, making it ideal for teams and organizations of all sizes.
 
-- ⚛️ React (Frontend SPA)
-- 🟢 Node.js + Express (Backend)
-- 🗄 PostgreSQL + Prisma ORM
-- 🔄 Socket.IO (Real-time updates)
-- 🔐 JWT Authentication
+## Introduction
 
----
+Task-Collab offers an end-to-end solution for collaborative task management. Users can create workspaces, invite team members, assign tasks, set deadlines, and monitor progress. The platform emphasizes real-time collaboration, notifications, and seamless user experience, making it suitable for agile development, project management, and academic or organizational coordination.
 
-## 📌 Features
+## Features
 
-### 🔐 Authentication
-- User registration
-- Login with JWT
-- Protected routes
+- **User Authentication & Authorization:** Secure sign-up, login, and role-based access control for data safety.
+- **Workspace Management:** Create multiple workspaces for different teams or projects.
+- **Task Assignment:** Assign tasks to users, set priorities, deadlines, and monitor status.
+- **Real-Time Collaboration:** Live updates on task changes and team activities.
+- **Notifications:** Alerts for task assignments, status updates, and approaching deadlines.
+- **Commenting & Discussion:** Collaborate on tasks with threaded comments.
+- **File Attachments:** Attach documents and resources to tasks.
+- **Flexible Views:** Organize tasks via lists, boards, or calendar views.
+- **API-Driven:** RESTful APIs for integration with other tools or automation.
+- **Extensible Architecture:** Easy to add custom features or integrate third-party services.
 
-### 📋 Board Management
-- Create boards
-- Delete boards
-- View all boards
+## Configuration
 
-### 📂 Lists
-- Create lists inside boards
-- View lists per board
+Task-Collab is configurable to suit various deployment environments and use cases. Key configuration areas include:
 
-### ✅ Tasks
-- Create tasks inside lists
-- Delete tasks
-- Inline task input
-- Task activity logging
+- **Environment Variables:** Set sensitive information such as database URIs, secret keys, and API tokens through environment variables.
+- **Database:** Configure the platform to use your preferred database provider (e.g., MongoDB, PostgreSQL).
+- **Email & Notification Services:** Integrate third-party services for email and push notifications.
+- **Frontend Client:** Adjust the client URL and CORS policies for your frontend deployment.
+- **Customization:** Modify branding, workspace limits, and task properties via configuration files.
 
-### 📡 Real-Time Updates
-- Real-time activity updates via WebSockets
-- Board-level socket rooms
+### Example `.env` Settings
 
-### 📝 Activity Tracking
-- Logs:
-  - Task created
-  - Task deleted
-  - List created
-- Activity panel updates instantly
+```env
+DATABASE_URL=mongodb://localhost:27017/task-collab
+JWT_SECRET=your_jwt_secret
+FRONTEND_URL=http://localhost:3000
+EMAIL_SERVICE_API_KEY=your_email_api_key
+PORT=4000
+```
 
-### 🔎 Pagination
-- Activity pagination support (page-based)
+## Requirements
 
----
+Before installing Task-Collab, ensure your environment meets these prerequisites:
 
-## 🏗 Architecture Overview
+- **Node.js** (v14 or higher)
+- **npm** (v6 or higher) or **yarn**
+- **Database** (MongoDB recommended, PostgreSQL supported)
+- **Git** (for cloning the repository)
+- **Optional:** Docker (for containerized deployment)
+- **Supported OS:** Linux, macOS, Windows
 
-### 🖥 Frontend (React SPA)
+## Installation
 
-frontend/
-│
-├── components/
+Follow these steps to install and run Task-Collab:
 
-│ ├── ListColumn.jsx
-│ ├── TaskCard.jsx
-│ └── ActivityPanel.jsx
-│
-├── pages/
-│ ├── Login.jsx
-│ ├── Register.jsx
-│ ├── Dashboard.jsx
-│ └── BoardPage.jsx
-│
-├── features/ (Redux slices)
-├── services/
-│ ├── api.js
-│ └── socket.js
+1. **Clone the Repository**
+    ```bash
+    git clone https://github.com/harshk1010/Task-Collab.git
+    cd Task-Collab
+    ```
 
+2. **Install Dependencies**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-### State Management
-- Redux Toolkit for authentication & boards
-- Local state for board-level updates
+3. **Configure Environment**
+    - Copy the example environment file and update values as needed:
+      ```bash
+      cp .env.example .env
+      ```
+    - Edit `.env` to match your configuration.
 
----
+4. **Set Up the Database**
+    - Ensure your database server is running and accessible.
+    - Update the `DATABASE_URL` in your `.env` file with your database connection string.
 
-### 🧠 Backend (Node + Express)
+5. **Run Database Migrations (if needed)**
+    - Apply migrations or initialize collections as described in the repository documentation.
 
+6. **Start the Development Server**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
 
-backend/
-│
-├── prisma/
-│   └── schema.prisma
-│
-├── controllers/
-│   ├── auth.controller.js
-│   ├── board.controller.js
-│   ├── list.controller.js
-│   ├── task.controller.js
-│   └── activity.controller.js
-│
-├── routes/
-│   ├── auth.routes.js
-│   ├── board.routes.js
-│   ├── list.routes.js
-│   ├── task.routes.js
-│   └── index.js
-│
-├── middleware/
-│   └── auth.middleware.js
-│
-├── sockets/
-│   └── index.js
-│
-├── utils/
-│   └── prisma.js
-│
-├── .env
-├── package.json
-└── server.js
+7. **Access the Application**
+    - The server should now be running (default: `http://localhost:4000`).
+    - Connect your frontend client or use API endpoints to interact with the backend.
 
+8. **Optional: Docker Deployment**
+    - Build and run the application using Docker for easier deployment.
+      ```bash
+      docker build -t task-collab .
+      docker run -d -p 4000:4000 --env-file .env task-collab
+      ```
 
 ---
 
-### 🗄 Database Schema (Prisma)
-
-Core Models:
-
-- User
-- Board
-- List
-- Task
-- Activity
-
-### Relationships
-
-User → Boards  
-Board → Lists  
-List → Tasks  
-Board → Activity  
-
----
-
-
----
-
-### 🔄 Real-Time Strategy
-
-- Socket.IO used for live updates
-- Users join board-specific rooms
-- Backend emits events:
-  - `activityCreated`
-- Frontend listens and updates ActivityPanel instantly
-
----
-
-## ⚙️ Setup Instructions
-
-### Installation & Setup Guide
-### 1️⃣ Clone the Repository
-git clone <your-repo-url>
-cd task-collab-platform
-
-### 2️⃣ Backend Setup
-
-### Navigate to backend folder:
-
-cd backend
-
-
-### Install dependencies:
-
-npm install
-
-### Create Environment Variables
-
-Create a .env file inside the backend/ folder:
-
-DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@localhost:5432/task-collab"
-JWT_SECRET="supersecret"
-
-
-Replace YOUR_PASSWORD with your PostgreSQL password.
-
-### Run Prisma Migration
-
-Initialize database schema:
-
-npx prisma migrate dev --name init
-
-
-### Generate Prisma client:
-
-npx prisma generate
-
-### Start Backend Server
-npm run dev
-
-
-### Backend will run at:
-
-http://localhost:5000
-
-## 3️⃣ Frontend Setup
-
-### Open a new terminal and navigate to frontend:
-
-cd frontend
-
-
-### Install dependencies:
-
-npm install
-
-
-### Start React app:
-
-npm start
-
-
-### Frontend will run at:
-
-http://localhost:3000
+For more details, check the repository’s documentation and code comments. Task-Collab is actively maintained—issues and contributions are welcome!
